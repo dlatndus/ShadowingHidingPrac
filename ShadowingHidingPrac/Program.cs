@@ -8,6 +8,41 @@ namespace ShadowingHidingPrac
 {
     internal class Program
     {
+
+        class Animal
+        {
+            public virtual void Eat() {
+                Console.WriteLine("냠냠 먹습니다");
+
+            }
+        }
+
+        class Dog : Animal
+        {
+            public new void Eat() //하이딩
+            {
+                Console.WriteLine("촵촵 먹습니다");
+            }
+        }
+
+        class Cat : Animal
+        {
+            public override void Eat()//오버라이딩
+            {
+                Console.WriteLine("뇸뇸 먹습니다");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
         class Paraent
         {
             public int variable = 273;
@@ -55,6 +90,16 @@ namespace ShadowingHidingPrac
             //오버라이딩
             child.Method2();//자식의 메서드
             p.Method2();//자식의 메서드
+
+            List<Animal> Animals = new List<Animal>()
+            {
+                new Dog(), new Cat(), new Cat(), new Dog(),
+                 new Dog(), new Cat(), new Cat(), new Dog(),
+            };
+            foreach (var item in Animals)
+            {
+                item.Eat();
+            }
         }
     }
 }
