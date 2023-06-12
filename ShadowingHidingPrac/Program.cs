@@ -15,11 +15,20 @@ namespace ShadowingHidingPrac
             {
                 Console.WriteLine("부모의 메서드");
             }
+            public virtual void Method2()
+            {
+                Console.WriteLine("부모의 메서드");
+            }
+
         }
 
         class Child : Paraent {
             public new string variable = "shadowing"; // new를 쓰면 hiding이라는 것을 명시함
             public new void Method() //hiding / overridingX
+            {
+                Console.WriteLine("자식의 메서드");
+            }
+            public override void Method2() //부모꺼에 virtual을 써야 자식에서 override를 할 수 있음
             {
                 Console.WriteLine("자식의 메서드");
             }
@@ -39,8 +48,13 @@ namespace ShadowingHidingPrac
             Paraent p = child;
             Console.WriteLine(p.variable);//"273"
 
-            child.Method();
-            p.Method();
+            //하이딩
+            child.Method();//부모의 메서드
+            p.Method();//자식의 메서드
+
+            //오버라이딩
+            child.Method2();//자식의 메서드
+            p.Method2();//자식의 메서드
         }
     }
 }
